@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Application Pink Breast</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        </nav>
+        <!-- Header-->
+        <header class="bg-pink bg-imagepink py-5"  style="background-image: url('static/img/header.gif')">
+            <div class="container px-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="text-center my-5">
+                            <h1 class="display-5 fw-bolder text-black mb-2">Pink Breast</h1>
+                            <p class="lead text-black-50 mb-4 fw-bolder">Votre nouvel outil en ligne pour prendre soin des autres.</p>
+                            <p class="lead text-black-50 mb-4">En analysant les caractéristiques des noyaux cellulaires mammaires, obtenez un diagnostic sur la présence d'une tumeur maligne ou bénigne.</p>
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#prediction">Commencer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+                <!-- Features section-->
+                <section class="py-5 border-bottom" id="features">
+                    <div class="container px-5 my-5">
+                        <div class="row gx-5">
+                            <div class="col-lg-4 mb-5 mb-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-globe2"></i></div>
+                                <h2 class="h4 fw-bolder">Le cancer du sein</h2>
+                                <p>Le cancer du sein est le cancer le plus fréquent chez les femmes dans le monde. Il représente 25 % de tous les cas de cancer et a touché plus de 2,2 millions de personnes en 2020. En France,  il fait l'objet d'un programme national de dépistage organisé afin d'être détecté précocement et d'en réduire la mortalité.</p>
+                            </div>
+                            <div class="col-lg-4 mb-5 mb-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-hospital"></i></div>
+                                <h2 class="h4 fw-bolder">Le diagnostic</h2>
+                                <p>En cas d’anomalie lors de la mammographie ou palpations, on pratique au patient une biopsie par aiguille fine (BAF) afin de prélever des cellules dans la masse. Le prélèvement est ensuite examiné au microscope et les caractéristiques des cellules sont ainsi étudiés de part leur texture, périmètre, ect...</p>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-search"></i></div>
+                                <h2 class="h4 fw-bolder">L'analyse</h2>
+                                <p>L'analyse des cellules, par le praticien, confirment ou non la présence de tumeur maligne ou benigne (exempt de métastase, non cancéreuse). Notre modèle d'intelligence artificielle vient en soutien et offre ainsi une aide aux professionnels de santé en palliant aux erreurs humaines et en réduisant le temps d’analyse.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Prediction section-->
+        <section class="bg-light py-5" id="prediction">
+            <div class="container px-5 my-5 px-5">
+                <div class="text-center mb-5">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-universal-access"></i></div>
+                    <h2 class="fw-bolder">Application de prédiction</h2>
+                    <p class="lead mb-0">Remplissez les caractéristiques, en micromètres, du noyau cellulaire et obtenez une réponse rapide avec une précision de 98%</p>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6">
+                        <form id="form"  method="POST">
+                            <!-- concave_points_worst input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="concave_points_worst", placeholder="Enter concave_points_worst" required />
+                                <label for="name">Points concaves - Au plus élevé</label>
+                            </div>
+                            <!-- concave_points_mean input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="concave_points_mean", placeholder="Enter concave_points_mean" required/>
+                                <label for="name">Points concaves - Moyenne</label>
+                            </div>
+                            <!-- radius_worst input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="radius_worst", placeholder="Enter radius_worst" required/>
+                                <label for="name">Rayon - Au plus élevé</label>
+                            </div>
+                            <!-- perimeter_worst input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="perimeter_worst", placeholder="Enter perimeter_worst" required/>
+                                <label for="name">Périmètre - Au plus élevé</label>
+                            </div>
+                            <!-- compactness_worst input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="compactness_worst", placeholder="Enter compactness_worst" required/>
+                                <label for="name">Compacité - Au plus élevé</label>
+                            </div>
+                            <!-- symmetry_worst input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="symmetry_worst", placeholder="Enter symmetry_worst" required/>
+                                <label for="name">Symétrie - Au plus élevé</label>
+                            </div>
+                            <!-- texture_worst input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="texture_worst", placeholder="Enter texture_worst" required/>
+                                <label for="name">Texture - Au plus élevé</label>
+                            </div>
+                            <!-- area_se input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="area_se", placeholder="Enter texture_worst" required/>
+                                <label for="name">Région - Au minimum</label>
+                            </div>
+                            <!-- concavity_mean input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="concavity_mean", placeholder="Enter concavity_mean" required/>
+                                <label for="name">Concavité - Moyenne</label>
+                            </div>
+                            <!-- area_worst input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="area_worst", placeholder="Enter area_worst" required/>
+                                <label for="name">Région - Au plus élevé</label>
+                            </div>
+                            <!-- texture_mean input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" step=".01" min="0" max="1" name="texture_mean", placeholder="Enter texture_mean" required/>
+                                <label for="name">Texture - Moyenne</label>
+                            </div>
+                         <!-- Submit Button-->
+                            <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit" value="submit">Obtenir la prédiction</button></div>
+                        </form><br><br>
+                        <div class="container px-5 bg-dark btn" id="resultat">
+                            <h2 class="h4 fw-bolder text-white">Résultat</h2>
+                            <p class="m-0 text-center text-white">{{ output1 }}</p>
+                            <p class="m-0 text-center text-white">{{ output2 }}</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-5">
+                <p class="m-0 text-center text-white">Dev par Cerise | <a href="https://github.com/bonjourcerise/" target="_blank">Github</a> | <a href="https://www.linkedin.com/in/cerise-prost/" target="_blank">Linkedin</a></p>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
